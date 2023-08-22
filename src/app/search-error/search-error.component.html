@@ -1,1 +1,4 @@
-<p>search-error works!</p>
+<div *ngIf="error">
+  <h4>Error:</h4>
+  <p>{{ error.message }}</p>
+</div>

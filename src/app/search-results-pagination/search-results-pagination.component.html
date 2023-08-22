@@ -1,1 +1,38 @@
-<p>search-results-pagination works!</p>
+<div *ngIf="totalPages > 1">
+  <button
+    (click)="onPageChange(currentPage - 1)"
+    [disabled]="currentPage === 1"
+  >
+    Previous
+  </button>
+  <button
+    (click)="onPageChange(1)"
+    [disabled]="currentPage === 1"
+    [class.active]="currentPage === 1"
+  >
+    1
+  </button>
+  <span *ngIf="showFirstEllipsis()">...</span>
+  <button
+    *ngFor="let page of middlePages"
+    [class.active]="page === currentPage"
+    [disabled]="page === currentPage"
+    (click)="onPageChange(page)"
+  >
+    {{ page }}
+  </button>
+  <span *ngIf="showLastEllipsis()">...</span>
+  <button
+    (click)="onPageChange(totalPages)"
+    [disabled]="currentPage === totalPages"
+    [class.active]="currentPage === totalPages"
+  >
+    {{ totalPages }}
+  </button>
+  <button
+    (click)="onPageChange(currentPage + 1)"
+    [disabled]="currentPage === totalPages"
+  >
+    Next
+  </button>
+</div>

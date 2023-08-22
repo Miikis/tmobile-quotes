@@ -1,1 +1,8 @@
-<p>search-results works!</p>
+<ol *ngIf="results.length; else noResults">
+  <li *ngFor="let result of results">
+    {{ result.content }} - {{ result.author }}
+  </li>
+</ol>
+<ng-template #noResults>
+  <div>No results found</div>
+</ng-template>
